@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { Vars } from '@/utils/Vars'
 import { Colors } from '@utils/Colors'
 import { useColorScheme } from 'react-native'
 
@@ -8,6 +9,7 @@ export type ThemeContextType = {
     dark: typeof Colors['dark']
     light: typeof Colors['light']
   },
+  vars: typeof Vars,
   hslToHex: (hsl: string) => string
 }
 
@@ -43,7 +45,8 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 
   const value: ThemeContextType = {
     colors,
-    hslToHex
+    hslToHex,
+    vars: Vars,
   }
 
 
@@ -55,5 +58,10 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 }
 
 export function useThemeContext() {
-  return React.useContext(ThemeContext)
+  const context = React.useContext(ThemeContext)
+  if (!context) {
+    throw new Error('useTheme must be used within a ThemeProvider')
+  }
+
+  return context
 }

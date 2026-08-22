@@ -3,7 +3,7 @@ import React from 'react'
 import { StyleSheet } from 'react-native'
 
 import { getBounds, getCenter } from 'geolib'
-import ReactMapView, { Region, UrlTile } from 'react-native-maps'
+import ReactMapView, { Region } from 'react-native-maps'
 
 import useStyles from '@hooks/useStyles'
 import { ThemeContextType } from '@stores/ThemeContext'
@@ -115,7 +115,7 @@ const MapView = React.forwardRef<MapViewHandle, Props>(function MapView({ childr
       mapType={mapType}
       showsUserLocation={options?.showsUserLocation}
       region={options?.region}>
-      {mapType === 'standard' && (
+      {/* {mapType === 'standard' && (
         <UrlTile
           urlTemplate={URL_TEMPLATE}
           maximumZ={19}
@@ -123,7 +123,7 @@ const MapView = React.forwardRef<MapViewHandle, Props>(function MapView({ childr
           shouldReplaceMapContent={true}
           tileSize={256}
         />
-      )}
+      )} */}
 
       {children}
     </ReactMapView>
