@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { StyleSheet } from 'react-native'
 
+import Button from '@/components/composites/Button'
 import View from '@components/elements/View'
 import { StatusBar } from 'expo-status-bar'
 
@@ -33,6 +34,11 @@ export default function SettingsScreen() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
+      <Button
+        title="Close"
+        onPress={() => navigation.goBack()}
+        style={styles.button}
+      />
     </View>
   )
 }
@@ -40,7 +46,10 @@ export default function SettingsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
+    padding: 16
   },
+  button: {
+    height: 44
+  }
 })

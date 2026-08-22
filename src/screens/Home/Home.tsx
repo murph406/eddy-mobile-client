@@ -3,28 +3,20 @@ import React from 'react'
 import { StyleSheet } from 'react-native'
 
 import MapView, { MapViewHandle } from '@/components/layouts/MapView'
+import { presentTestSheet } from '@/native/SheetPresenter'
 import { HomeStackParamList } from '@/router'
 import View from '@components/elements/View'
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { SearchBarCommands } from 'react-native-screens'
 
 
 export default function Home() {
   const mapRef = React.useRef<MapViewHandle>(null)
-  const searchBarRef = React.useRef<SearchBarCommands>(null)
-
   const navigation = useNavigation<NativeStackNavigationProp<HomeStackParamList>>()
 
   React.useEffect(() => {
     navigation.setOptions({
       headerTitle: '',
       headerTransparent: true,
-      headerSearchBarOptions: {
-        ref: searchBarRef,
-        placeholder: 'Search',
-        onFocus: () => {
-        },
-      },
       unstable_headerRightItems: () => [
         {
           type: 'button',
@@ -33,7 +25,7 @@ export default function Home() {
             type: 'sfSymbol',
             name: 'location.fill',
           },
-          onPress: () => null,
+          onPress: () => presentTestSheet(),
         },
         {
           type: 'button',

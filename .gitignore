@@ -36,6 +36,12 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
-# generated native folders
-/ios
+# android — still disposable/regenerated via prebuild, no custom native code here
 /android
+
+# ios — tracked now that we have custom native modules; ignore only build artifacts
+ios/Pods/
+ios/build/
+ios/DerivedData/
+*.xcuserstate
+xcuserdata/
