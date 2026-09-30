@@ -38,6 +38,7 @@ export default function SettingsScreen() {
   return (
     <View style={s.container}>
       <StatusBar style="auto" />
+      
       <Button
         title="Close"
         onPress={() => navigation.goBack()}

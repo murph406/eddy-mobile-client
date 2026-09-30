@@ -1,7 +1,7 @@
 PODS:
-  - EXConstants (56.0.24):
+  - EXConstants (56.0.27):
     - ExpoModulesCore
-  - Expo (56.0.20):
+  - Expo (56.0.23):
     - ExpoModulesCore
     - ExpoModulesJSI
     - hermes-engine
@@ -27,13 +27,13 @@ PODS:
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
     - Yoga
-  - ExpoAsset (56.0.23):
+  - ExpoAsset (56.0.25):
     - ExpoModulesCore
   - ExpoDevice (56.0.4):
     - ExpoModulesCore
   - ExpoDomWebView (56.0.6):
     - ExpoModulesCore
-  - ExpoFileSystem (56.0.10):
+  - ExpoFileSystem (56.0.11):
     - ExpoModulesCore
   - ExpoFont (56.0.7):
     - ExpoModulesCore
@@ -41,7 +41,7 @@ PODS:
     - ExpoModulesCore
   - ExpoLogBox (56.0.14):
     - React-Core
-  - ExpoModulesCore (56.0.24):
+  - ExpoModulesCore (56.0.27):
     - ExpoModulesJSI
     - hermes-engine
     - RCTRequired
@@ -65,13 +65,13 @@ PODS:
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
     - Yoga
-  - ExpoModulesJSI (56.0.12):
+  - ExpoModulesJSI (56.0.14):
     - React-Core
     - ReactCommon
-  - ExpoModulesWorklets (56.0.24):
+  - ExpoModulesWorklets (56.0.27):
     - ExpoModulesCore
     - ExpoModulesJSI
-  - ExpoModulesWorkletsAdapter (56.0.24):
+  - ExpoModulesWorkletsAdapter (56.0.27):
     - ExpoModulesCore
     - ExpoModulesJSI
     - ExpoModulesWorklets
@@ -2487,19 +2487,19 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  EXConstants: dd9a5bd947ed55aff86318db9268e44b1d499089
-  Expo: 7ab3edc255cc514edeeb6fbffc64db05b4aef571
-  ExpoAsset: 285f5cd377574a94ffbe60ec7d9e3d8eeeecb458
+  EXConstants: 9d3531b15141ea2e24f4b48d51050291f83ccce7
+  Expo: 668a9b2aa9e6bfc2586f2a0e42d1705e4cfc6f1d
+  ExpoAsset: 248b72382c8285f02fd6fb6d62ff6d2179071023
   ExpoDevice: f527f8bbefa6efa12f8ef63e9038dd1d5d903697
   ExpoDomWebView: 4e53b05879dc73ba374f76bff93dd64c8a0d91b3
-  ExpoFileSystem: df530c4d7a94d57f40847f84b118766a79747d37
+  ExpoFileSystem: 9d47583cbcc53ab2411901c601cd0a7ca18b3c11
   ExpoFont: 274487aa78f8c65d6551e2558eca3ec6ce3432ce
   ExpoKeepAwake: 359c47a1d9ccc3a3c519bca6e39562cce230c5bb
   ExpoLogBox: cdad5c9402a186574fb5924ea91df1f08ba9a98a
-  ExpoModulesCore: 133225f2893b7cc0d566119988581a952a203310
-  ExpoModulesJSI: e62656cfaffb5aeb3fdc1dd2bc49f77e87ed2261
-  ExpoModulesWorklets: 3a3bbf269f2a9b599f8f7f42c410b9b9851fe922
-  ExpoModulesWorkletsAdapter: 8ed612963423a06b1fa4d96c5e1d73325e56c3a4
+  ExpoModulesCore: 7c2c84e7570178a36bae08bca54b1075b43f9918
+  ExpoModulesJSI: be5366379de5036c554db5f6478fc994da8f5ece
+  ExpoModulesWorklets: 706d2511ac0e91743314d8f2e47683a924ae92f3
+  ExpoModulesWorkletsAdapter: 72814d068279d4bfe282d1d5f0ff80df7901b946
   ExpoSymbols: 37e96a38eed3fb50af4b7c86b8a80ed3054a0a01
   FBLazyVector: 24e62c765683b8d89006a88a2c8f5cf019f0074d
   hermes-engine: 4bc14d1748f5b7d77c854cdba2e437e34b9e9e78
