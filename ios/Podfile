@@ -63,5 +63,15 @@ target 'Eddy' do
       :mac_catalyst_enabled => false,
       :ccache_enabled => ccache_enabled?(podfile_properties),
     )
+
+    # Raise pods below our min iOS version. Added for MapboxMaps resource bundle
+    # (declared 14.0, Xcode 26+ requires 15.0). Safe to remove once no pod needs it.
+    installer.pods_project.targets.each do |pod_target|
+      pod_target.build_configurations.each do |build_config|
+        if build_config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_f < 15.1
+          build_config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.1'
+        end
+      end
+    end
   end
 end

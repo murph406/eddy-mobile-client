@@ -1,16 +1,15 @@
 import { useNavigation } from '@react-navigation/native'
+import Mapbox, { MapView } from '@rnmapbox/maps'
 import React from 'react'
 import { StyleSheet } from 'react-native'
 
-import MapView, { MapViewHandle } from '@/components/layouts/MapView'
 import { presentTestSheet } from '@/native/SheetPresenter'
 import { HomeStackParamList } from '@/router'
-import View from '@components/elements/View'
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
+Mapbox.setAccessToken(process.env.EXPO_PUBLIC_MAPBOX_TOKEN)
 
 export default function Home() {
-  const mapRef = React.useRef<MapViewHandle>(null)
   const navigation = useNavigation<NativeStackNavigationProp<HomeStackParamList>>()
 
   React.useEffect(() => {
@@ -43,10 +42,8 @@ export default function Home() {
   }, [navigation])
 
   return (
-    <MapView ref={mapRef}>
-      <View style={styles.container}>
-
-      </View>
+    <MapView style={{ flex: 1 }} styleURL={Mapbox.StyleURL.Outdoors}>
+      {/* <Camera zoomLevel={11} centerCoordinate={[-121.76, 46.85]} /> */}
     </MapView>
   )
 }

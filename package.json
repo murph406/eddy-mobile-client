@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "main": "index.tsx",
   "scripts": {
-    "start": "expo start",
-    "start:ios": "expo start --ios",
+    "start": "npx expo start",
+    "start:ios": "npx expo run:ios",
+    "start:ios:clean": "cd ios && pod install && cd .. && npx expo run:ios",
     "start:android": "expo start --android",
     "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx  --fix"
   },
@@ -12,6 +13,7 @@
     "@react-navigation/bottom-tabs": "^7.18.2",
     "@react-navigation/drawer": "^7.12.2",
     "@react-navigation/native-stack": "^7.17.5",
+    "@rnmapbox/maps": "^10.3.5",
     "expo": "~56.0.23",
     "expo-device": "~56.0.4",
     "expo-font": "~56.0.7",
