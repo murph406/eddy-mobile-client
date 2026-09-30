@@ -1,12 +1,13 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import PinScreen from '@/screens/Pin';
 import SettingsScreen from '@/screens/Settings';
 import HomeScreen from '@screens/Home';
 
 export type HomeStackParamList = {
   Home: undefined
   Settings: undefined
-  Search: undefined
+  Pin: undefined
 }
 
 const Stack = createNativeStackNavigator<HomeStackParamList>()
@@ -30,6 +31,21 @@ function AppStack() {
           sheetInitialDetentIndex: 0,
           sheetExpandsWhenScrolledToEdge: true,
           contentStyle: { backgroundColor: 'white' },
+        }}
+      />
+
+      <Stack.Screen
+        name="Pin"
+        component={PinScreen}
+        options={{
+          presentation: 'formSheet',
+          sheetAllowedDetents: [0.25, 1],
+          sheetGrabberVisible: false,
+          sheetCornerRadius: 20,
+          sheetInitialDetentIndex: 0,
+          sheetExpandsWhenScrolledToEdge: true,
+          contentStyle: { backgroundColor: 'white' },
+          sheetLargestUndimmedDetentIndex: 0,
         }}
       />
     </Stack.Navigator>

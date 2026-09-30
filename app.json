@@ -11,8 +11,7 @@
       "bundleIdentifier": "com.murph406.eddy"
     },
     "plugins": [
-      "expo-font",
-      "@rnmapbox/maps"
+      "expo-font"
     ]
   }
 }

@@ -1,21 +1,20 @@
 import { useNavigation } from '@react-navigation/native'
+import { StatusBar } from 'expo-status-bar'
 import React from 'react'
 import { StyleSheet } from 'react-native'
 
-import Button from '@/components/composites/Button'
 import useStyles from '@/hooks/useStyles'
 import { ThemeContextType } from '@/stores/ThemeContext'
 import View from '@components/elements/View'
-import { StatusBar } from 'expo-status-bar'
 
-export default function SettingsScreen() {
+export default function PinScreen() {
   const navigation = useNavigation()
   const s = useStyles(createStyles)
 
   React.useEffect(() => {
     navigation.setOptions({
       headerTransparent: true,
-      headerTitle: 'Settings',
+      headerTitle: 'Pin',
       headerTitleStyle: {
         fontSize: 21,
         color: 'white',
@@ -38,22 +37,16 @@ export default function SettingsScreen() {
   return (
     <View style={s.container}>
       <StatusBar style="auto" />
-
-      <Button
-        title="Close"
-        accentColor={s.buttonColor}
-        onPress={() => navigation.goBack()}
-        style={s.button}
-      />
     </View>
   )
 }
 
+
 const createStyles = (theme: ThemeContextType) => {
-  const { vars, colors } = theme
+  const { vars } = theme
   const { unit } = vars
 
-  const styles = {
+  return {
     ...StyleSheet.create({
       container: {
         flex: 1,
@@ -63,13 +56,9 @@ const createStyles = (theme: ThemeContextType) => {
         paddingBottom: unit * 1.5,
       },
       button: {
-        height: unit * 3.75,
-      },
+        height: unit * 3.75
+      }
     }),
   }
-
-  const buttonColor = colors.brand
-
-  return { ...styles, buttonColor }
 }
 
