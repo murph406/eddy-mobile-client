@@ -4,12 +4,15 @@ import React from 'react'
 import { StyleSheet } from 'react-native'
 
 import useStyles from '@/hooks/useStyles'
-import { ThemeContextType } from '@/stores/ThemeContext'
+import { useMapContext } from '@/stores/MapContext'
+import { ThemeContextType, useThemeContext } from '@/stores/ThemeContext'
 import View from '@components/elements/View'
 
 export default function PinScreen() {
+  const { setPin, goToUserLocation } = useMapContext()
   const navigation = useNavigation()
   const s = useStyles(createStyles)
+  const { scheme } = useThemeContext()
 
   React.useEffect(() => {
     navigation.setOptions({
@@ -17,7 +20,7 @@ export default function PinScreen() {
       headerTitle: 'Pin',
       headerTitleStyle: {
         fontSize: 21,
-        color: 'white',
+        color: scheme === 'light' ? 'black' :'white',
         fontWeight: '700',
       },
       unstable_headerRightItems: () => [
@@ -28,11 +31,15 @@ export default function PinScreen() {
             type: 'sfSymbol',
             name: 'xmark',
           },
-          onPress: () => navigation.goBack(),
+          onPress: () => {
+            setPin(null)
+            goToUserLocation()
+            navigation.goBack()
+          },
         },
       ],
     })
-  }, [navigation])
+  }, [navigation, scheme])
 
   return (
     <View style={s.container}>

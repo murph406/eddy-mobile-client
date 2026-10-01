@@ -7,16 +7,18 @@ import Divider from '@/components/elements/Divider'
 import Switch from '@/components/elements/Switch'
 import Text from '@/components/elements/Text'
 import useStyles from '@/hooks/useStyles'
-import { ThemeContextType } from '@/stores/ThemeContext'
+import { ThemeContextType, useThemeContext } from '@/stores/ThemeContext'
 import { useUserContext } from '@/stores/UserContext'
 import { StatusBar } from 'expo-status-bar'
 
 export default function SettingsScreen() {
   const navigation = useNavigation()
   const s = useStyles(createStyles)
+  const { scheme } = useThemeContext()
 
   const {
     locationPermissionStatus,
+    validateLocationsPermissions
   } = useUserContext()
 
   const locationsSwitchValue = React.useMemo(() => {
@@ -24,13 +26,14 @@ export default function SettingsScreen() {
     return false
   }, [locationPermissionStatus])
 
+
   React.useEffect(() => {
     navigation.setOptions({
       headerTransparent: true,
       headerTitle: 'Settings',
       headerTitleStyle: {
         fontSize: 21,
-        color: 'white',
+        color: scheme === 'light' ? 'black' :'white',
         fontWeight: '700',
       },
       unstable_headerRightItems: () => [
@@ -45,7 +48,7 @@ export default function SettingsScreen() {
         },
       ],
     })
-  }, [navigation])
+  }, [navigation, scheme])
 
 
   return (
@@ -58,10 +61,11 @@ export default function SettingsScreen() {
 
           <Switch
             value={locationsSwitchValue}
+            onValueChange={validateLocationsPermissions}
           />
         </View>
 
-        <Divider/>
+        <Divider />
 
         <View style={s.row}>
           <Text>Push Notifications</Text>
@@ -90,7 +94,7 @@ const createStyles = (theme: ThemeContextType) => {
         paddingBottom: unit * 1.5,
       },
       wrapper: {
-        padding: vars.unit, 
+        padding: vars.unit,
         gap: vars.unit
       },
       button: {

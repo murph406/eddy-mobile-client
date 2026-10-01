@@ -2,6 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import PinScreen from '@/screens/Pin';
 import SettingsScreen from '@/screens/Settings';
+import { useThemeContext } from '@/stores/ThemeContext';
 import HomeScreen from '@screens/Home';
 
 export type HomeStackParamList = {
@@ -13,6 +14,9 @@ export type HomeStackParamList = {
 const Stack = createNativeStackNavigator<HomeStackParamList>()
 
 function AppStack() {
+  const { scheme } = useThemeContext()
+  const sheetBackgroundColor = scheme === 'light' ? `rgba(255, 255, 255, .35)` : 'transparent' 
+
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -30,7 +34,7 @@ function AppStack() {
           sheetCornerRadius: 50,
           sheetInitialDetentIndex: 0,
           sheetExpandsWhenScrolledToEdge: true,
-          contentStyle: { backgroundColor: 'transparent' },
+          contentStyle: { backgroundColor: sheetBackgroundColor },
         }}
       />
 
@@ -44,7 +48,7 @@ function AppStack() {
           sheetCornerRadius: 30,
           sheetInitialDetentIndex: 0,
           sheetExpandsWhenScrolledToEdge: true,
-          contentStyle: { backgroundColor: 'white' },
+          contentStyle: { backgroundColor: sheetBackgroundColor },
           sheetLargestUndimmedDetentIndex: 0,
         }}
       />

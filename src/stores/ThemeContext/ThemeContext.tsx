@@ -9,6 +9,7 @@ export type ThemeContextType = {
     dark: typeof Colors['dark']
     light: typeof Colors['light']
   },
+  scheme: 'light' | 'dark'
   vars: typeof Vars,
   hslToHex: (hsl: string) => string
 }
@@ -17,16 +18,15 @@ const ThemeContext = React.createContext<ThemeContextType | null>(null)
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const colorScheme = useColorScheme()
+  const scheme = colorScheme === 'dark' ? 'dark' : 'light'
 
   const colors = React.useMemo(() => {
-    const scheme = colorScheme === 'dark' ? 'dark' : 'light'
-
     return {
       dark: Colors['dark'],
       light: Colors['light'],
       ...Colors[scheme]
     }
-  }, [colorScheme])
+  }, [colorScheme, scheme])
 
   function hslToHex(hsl: string = '') {
     const [h = 0, s = 0, l = 0] = hsl.match(/\d+\.?\d*/g)!.map(Number)
@@ -45,6 +45,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 
   const value: ThemeContextType = {
     colors,
+    scheme,
     hslToHex,
     vars: Vars,
   }

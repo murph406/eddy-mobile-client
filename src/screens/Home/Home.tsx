@@ -1,28 +1,22 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
-import useStyles from '@/hooks/useStyles'
 import { presentTestSheet } from '@/native/SheetPresenter'
 import { HomeStackParamList } from '@/router'
-import { ThemeContextType } from '@/stores/ThemeContext'
-import { Camera, CameraRef, Map as MapView, Marker } from '@maplibre/maplibre-react-native'
+import useStyles from '@hooks/useStyles'
+import { Camera, Map as MapView, Marker } from '@maplibre/maplibre-react-native'
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { useMapContext } from '@stores/MapContext'
+import { ThemeContextType } from '@stores/ThemeContext'
 import { StyleSheet, useWindowDimensions, View } from 'react-native'
 
 const key = process.env.EXPO_PUBLIC_MAPTILER_KEY
 if (!key) throw new Error('Missing EXPO_PUBLIC_MAPTILER_KEY in .env')
 
-const LIGHT_STYLE = `https://api.maptiler.com/maps/outdoor-v4/style.json?key=${key}`
-const DARK_STYLE = `https://api.maptiler.com/maps/outdoor-v4-dark/style.json?key=${key}`
-
-type Pin = { id: string; coordinate: [number, number] }
-
 export default function Home() {
+  const { cameraRef, mapTheme, pin, setPin, goToUserLocation } = useMapContext()
   const navigation = useNavigation<NativeStackNavigationProp<HomeStackParamList>>()
-  const cameraRef = React.useRef<CameraRef>(null)
   const s = useStyles(createStyles)
-
-  const [pin, setPin] = React.useState<Pin | null>(null)
 
   const { height } = useWindowDimensions()
 
@@ -54,15 +48,6 @@ export default function Home() {
     })
   }, [navigation])
 
-  async function goToUserLocation() {
-    setPin(null)
-    cameraRef.current?.flyTo({
-      center: [-122.33, 47.61],
-      zoom: 12,
-      duration: 3500,
-    })
-  }
-
   function handleLongPress(event: any) {
     const coordinate = event.nativeEvent.lngLat as [number, number]
 
@@ -77,7 +62,7 @@ export default function Home() {
   }
 
   return (
-    <MapView style={{ flex: 1 }} mapStyle={DARK_STYLE} onLongPress={handleLongPress} >
+    <MapView style={{ flex: 1 }} mapStyle={mapTheme} onLongPress={handleLongPress} >
       <Camera ref={cameraRef} zoom={12} center={[-122.33, 47.61]} />
 
       {pin && (
@@ -87,7 +72,6 @@ export default function Home() {
           />
         </Marker>
       )}
-
     </MapView>
   )
 }
