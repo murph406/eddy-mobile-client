@@ -1,15 +1,15 @@
 import { useNavigation } from '@react-navigation/native'
+import { StatusBar } from 'expo-status-bar'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 
-import GlassSurface from '@/components/composites/GlassSurface'
-import Divider from '@/components/elements/Divider'
-import Switch from '@/components/elements/Switch'
-import Text from '@/components/elements/Text'
-import useStyles from '@/hooks/useStyles'
-import { ThemeContextType, useThemeContext } from '@/stores/ThemeContext'
-import { useUserContext } from '@/stores/UserContext'
-import { StatusBar } from 'expo-status-bar'
+import GlassSurface from '@components/composites/GlassSurface'
+import Divider from '@components/elements/Divider'
+import Switch from '@components/elements/Switch'
+import Text from '@components/elements/Text'
+import useStyles from '@hooks/useStyles'
+import { ThemeContextType, useThemeContext } from '@stores/ThemeContext'
+import { useUserContext } from '@stores/UserContext'
 
 export default function SettingsScreen() {
   const navigation = useNavigation()
@@ -26,14 +26,13 @@ export default function SettingsScreen() {
     return false
   }, [locationPermissionStatus])
 
-
   React.useEffect(() => {
     navigation.setOptions({
       headerTransparent: true,
       headerTitle: 'Settings',
       headerTitleStyle: {
         fontSize: 21,
-        color: scheme === 'light' ? 'black' :'white',
+        color: scheme === 'light' ? 'black' : 'white',
         fontWeight: '700',
       },
       unstable_headerRightItems: () => [
@@ -50,13 +49,16 @@ export default function SettingsScreen() {
     })
   }, [navigation, scheme])
 
-
   return (
     <View style={s.container}>
       <StatusBar style="auto" />
 
+      <View style={s.row}>
+
+      </View>
+
       <GlassSurface cornerRadius={24} style={s.wrapper} glassStyle='clear'>
-        <View style={s.row}>
+d        <View style={s.row}>
           <Text>Location Services</Text>
 
           <Switch
@@ -69,9 +71,7 @@ export default function SettingsScreen() {
 
         <View style={s.row}>
           <Text>Push Notifications</Text>
-
-          <Switch
-          />
+          <Switch />
         </View>
 
       </GlassSurface>
