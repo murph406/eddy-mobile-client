@@ -25,12 +25,12 @@ function AppStack() {
         component={SettingsScreen}
         options={{
           presentation: 'formSheet',
-          sheetAllowedDetents: [0.5, 1],
+          sheetAllowedDetents: [0.5, .95],
           sheetGrabberVisible: false,
-          sheetCornerRadius: 20,
+          sheetCornerRadius: 50,
           sheetInitialDetentIndex: 0,
           sheetExpandsWhenScrolledToEdge: true,
-          contentStyle: { backgroundColor: 'white' },
+          contentStyle: { backgroundColor: 'transparent' },
         }}
       />
 
@@ -39,9 +39,9 @@ function AppStack() {
         component={PinScreen}
         options={{
           presentation: 'formSheet',
-          sheetAllowedDetents: [0.25, 1],
+          sheetAllowedDetents: [0.25, .95],
           sheetGrabberVisible: false,
-          sheetCornerRadius: 20,
+          sheetCornerRadius: 30,
           sheetInitialDetentIndex: 0,
           sheetExpandsWhenScrolledToEdge: true,
           contentStyle: { backgroundColor: 'white' },

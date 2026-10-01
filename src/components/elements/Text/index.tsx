@@ -18,7 +18,7 @@ const Text = ({
   type = 'default',
   ...rest
 }: Props) => {
-  
+
   const s = useStyles(createStyles)
 
   return (
@@ -47,14 +47,13 @@ const createStyles = (theme: ThemeContextType | null) => {
       fontFamily: 'LatoFontBold',
     },
     default: {
-      fontSize: 14,
-      letterSpacing: 1,
-      fontWeight: '600',
+      fontSize: 16,
+      letterSpacing: .65,
     },
     defaultBold: {
-      fontSize: 14,
-      letterSpacing: 1,
-      fontFamily: 'LatoFontBold',
+      fontSize: 16,
+      letterSpacing: .65,
+      fontWeight: '600',
     },
     title: {
       fontSize: 25,

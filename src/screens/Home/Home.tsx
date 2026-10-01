@@ -1,5 +1,5 @@
-import { useFocusEffect, useNavigation } from '@react-navigation/native'
-import React, { useCallback } from 'react'
+import { useNavigation } from '@react-navigation/native'
+import React from 'react'
 
 import useStyles from '@/hooks/useStyles'
 import { presentTestSheet } from '@/native/SheetPresenter'
@@ -25,12 +25,6 @@ export default function Home() {
   const [pin, setPin] = React.useState<Pin | null>(null)
 
   const { height } = useWindowDimensions()
-
-  useFocusEffect(
-    useCallback(() => {
-      goToUserLocation()
-    }, [])
-  )
 
   React.useEffect(() => {
     navigation.setOptions({

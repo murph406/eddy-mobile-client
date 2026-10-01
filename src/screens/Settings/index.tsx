@@ -1,16 +1,28 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 
-import Button from '@/components/composites/Button'
+import GlassSurface from '@/components/composites/GlassSurface'
+import Divider from '@/components/elements/Divider'
+import Switch from '@/components/elements/Switch'
+import Text from '@/components/elements/Text'
 import useStyles from '@/hooks/useStyles'
 import { ThemeContextType } from '@/stores/ThemeContext'
-import View from '@components/elements/View'
+import { useUserContext } from '@/stores/UserContext'
 import { StatusBar } from 'expo-status-bar'
 
 export default function SettingsScreen() {
   const navigation = useNavigation()
   const s = useStyles(createStyles)
+
+  const {
+    locationPermissionStatus,
+  } = useUserContext()
+
+  const locationsSwitchValue = React.useMemo(() => {
+    if (locationPermissionStatus?.status === 'granted') return true
+    return false
+  }, [locationPermissionStatus])
 
   React.useEffect(() => {
     navigation.setOptions({
@@ -35,16 +47,31 @@ export default function SettingsScreen() {
     })
   }, [navigation])
 
+
   return (
     <View style={s.container}>
       <StatusBar style="auto" />
 
-      <Button
-        title="Close"
-        accentColor={s.buttonColor}
-        onPress={() => navigation.goBack()}
-        style={s.button}
-      />
+      <GlassSurface cornerRadius={24} style={s.wrapper} glassStyle='clear'>
+        <View style={s.row}>
+          <Text>Location Services</Text>
+
+          <Switch
+            value={locationsSwitchValue}
+          />
+        </View>
+
+        <Divider/>
+
+        <View style={s.row}>
+          <Text>Push Notifications</Text>
+
+          <Switch
+          />
+        </View>
+
+      </GlassSurface>
+
     </View>
   )
 }
@@ -57,14 +84,24 @@ const createStyles = (theme: ThemeContextType) => {
     ...StyleSheet.create({
       container: {
         flex: 1,
-        justifyContent: 'flex-end',
+        justifyContent: 'flex-start',
         paddingHorizontal: unit,
-        paddingTop: unit,
+        paddingTop: unit * 6,
         paddingBottom: unit * 1.5,
+      },
+      wrapper: {
+        padding: vars.unit, 
+        gap: vars.unit
       },
       button: {
         height: unit * 3.75,
       },
+      row: {
+        flexDirection: 'row',
+        gap: vars.unit,
+        justifyContent: 'space-between',
+        alignItems: 'center'
+      }
     }),
   }
 

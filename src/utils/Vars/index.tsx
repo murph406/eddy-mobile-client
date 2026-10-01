@@ -28,7 +28,7 @@ const normalize = (size: number) => {
     return Math.round(PixelRatio.roundToNearestPixel(newSize)) - x
 }
 
-const unit = normalize(16)
+const unit = normalize(18)
 
 export const Vars = {
     unit,

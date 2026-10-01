@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
+		4476D86E306DEAF60067094D /* MapLibre in Frameworks */ = {isa = PBXBuildFile; productRef = A50063AF3D04A0A5665C3E27 /* MapLibre */; };
+		4476D876306DEC540067094D /* GlassSurfaceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4476D873306DEC540067094D /* GlassSurfaceManager.swift */; };
+		4476D877306DEC540067094D /* GlassSurfaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4476D872306DEC540067094D /* GlassSurfaceManager.m */; };
+		4476D878306DEC540067094D /* GlassSurfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4476D874306DEC540067094D /* GlassSurfaceView.swift */; };
 		44B460A9303A3E7C008EFA2B /* SheetPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B460A7303A3E7C008EFA2B /* SheetPresenter.m */; };
 		44B460AA303A3E7C008EFA2B /* SheetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B460A8303A3E7C008EFA2B /* SheetPresenter.swift */; };
 		44B460AF303A4A94008EFA2B /* GlassButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B460AE303A4A94008EFA2B /* GlassButtonView.swift */; };
@@ -27,6 +31,9 @@
 		13B07F961A680F5B00A75B9A /* Eddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Eddy/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Eddy/Info.plist; sourceTree = "<group>"; };
+		4476D872306DEC540067094D /* GlassSurfaceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlassSurfaceManager.m; sourceTree = "<group>"; };
+		4476D873306DEC540067094D /* GlassSurfaceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassSurfaceManager.swift; sourceTree = "<group>"; };
+		4476D874306DEC540067094D /* GlassSurfaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassSurfaceView.swift; sourceTree = "<group>"; };
 		44B460A6303A3E7C008EFA2B /* Eddy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Eddy-Bridging-Header.h"; path = "Eddy/Eddy-Bridging-Header.h"; sourceTree = "<group>"; };
 		44B460A7303A3E7C008EFA2B /* SheetPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SheetPresenter.m; path = ../Eddy/NativeModules/SheetPresenter/SheetPresenter.m; sourceTree = "<group>"; };
 		44B460A8303A3E7C008EFA2B /* SheetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SheetPresenter.swift; path = ../Eddy/NativeModules/SheetPresenter/SheetPresenter.swift; sourceTree = "<group>"; };
@@ -47,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4476D86E306DEAF60067094D /* MapLibre in Frameworks */,
 				911CD9C1EBC90A59DD0559FA /* libPods-Eddy.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,6 +73,7 @@
 		13B07FAE1A68108700A75B9A /* Eddy */ = {
 			isa = PBXGroup;
 			children = (
+				4476D875306DEC540067094D /* GlassSurface */,
 				BB2F792B24A3F905000567C9 /* Supporting */,
 				44B460AB303A48B7008EFA2B /* SheetPresenter */,
 				44B460B2303A4B6E008EFA2B /* GlassButton */,
@@ -85,6 +94,16 @@
 				C823B89E5DD5EF1926674F93 /* libPods-Eddy.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4476D875306DEC540067094D /* GlassSurface */ = {
+			isa = PBXGroup;
+			children = (
+				4476D872306DEC540067094D /* GlassSurfaceManager.m */,
+				4476D873306DEC540067094D /* GlassSurfaceManager.swift */,
+				4476D874306DEC540067094D /* GlassSurfaceView.swift */,
+			);
+			path = GlassSurface;
 			sourceTree = "<group>";
 		};
 		44B460AB303A48B7008EFA2B /* SheetPresenter */ = {
@@ -331,6 +350,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-Eddy/Pods-Eddy-frameworks.sh",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ExpoFileSystem/ExpoFileSystem.framework/ExpoFileSystem",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ExpoFont/ExpoFont.framework/ExpoFont",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ExpoLocation/ExpoLocation.framework/ExpoLocation",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ExpoModulesCore/ExpoModulesCore.framework/ExpoModulesCore",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ExpoModulesJSI/ExpoModulesJSI.framework/ExpoModulesJSI",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ExpoModulesWorklets/ExpoModulesWorklets.framework/ExpoModulesWorklets",
@@ -342,6 +362,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ExpoFileSystem.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ExpoFont.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ExpoLocation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ExpoModulesCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ExpoModulesJSI.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ExpoModulesWorklets.framework",
@@ -396,6 +417,9 @@
 				44B460B0303A4A94008EFA2B /* GlassButtonManager.m in Sources */,
 				44B460B1303A4A94008EFA2B /* GlassButtonManager.swift in Sources */,
 				44B460AA303A3E7C008EFA2B /* SheetPresenter.swift in Sources */,
+				4476D876306DEC540067094D /* GlassSurfaceManager.swift in Sources */,
+				4476D877306DEC540067094D /* GlassSurfaceManager.m in Sources */,
+				4476D878306DEC540067094D /* GlassSurfaceView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
