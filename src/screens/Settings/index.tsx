@@ -3,18 +3,29 @@ import { StatusBar } from 'expo-status-bar'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 
-import GlassSurface from '@components/composites/GlassSurface'
+import CardPicker, { CardPickerOption } from '@components/composites/CardPicker'
 import Divider from '@components/elements/Divider'
+import Section from '@components/elements/Section'
 import Switch from '@components/elements/Switch'
 import Text from '@components/elements/Text'
 import useStyles from '@hooks/useStyles'
+import { useMapContext } from '@stores/MapContext'
 import { ThemeContextType, useThemeContext } from '@stores/ThemeContext'
 import { useUserContext } from '@stores/UserContext'
+import { MapMode } from '@utils/Types'
+
+const MAP_STYLE_OPTIONS: CardPickerOption<MapMode>[] = [
+  { id: 'outdoors', title: 'Outdoor', imageName: 'map-outdoor' },
+  { id: 'topo', title: 'Topo', imageName: 'map-topo' },
+  { id: 'satellite', title: 'Satellite', imageName: 'map-satellite' },
+]
+
 
 export default function SettingsScreen() {
   const navigation = useNavigation()
   const s = useStyles(createStyles)
   const { scheme } = useThemeContext()
+  const { mapMode, setMapMode } = useMapContext()
 
   const {
     locationPermissionStatus,
@@ -53,36 +64,43 @@ export default function SettingsScreen() {
     <View style={s.container}>
       <StatusBar style="auto" />
 
-      <View style={s.row}>
+      <Section label='Map Modes'>
+        <CardPicker
+          options={MAP_STYLE_OPTIONS}
+          selectedId={mapMode}
+          onSelect={setMapMode}
+        />
+      </Section>
 
-      </View>
 
-      <GlassSurface cornerRadius={24} style={s.wrapper} glassStyle='clear'>
-d        <View style={s.row}>
-          <Text>Location Services</Text>
+      <Section label='Account'>
+        <View style={s.wrapper}>
 
-          <Switch
-            value={locationsSwitchValue}
-            onValueChange={validateLocationsPermissions}
-          />
+          <View style={s.row}>
+            <Text>Location Services</Text>
+
+            <Switch
+              value={locationsSwitchValue}
+              onValueChange={validateLocationsPermissions}
+            />
+          </View>
+
+          <Divider />
+
+          <View style={s.row}>
+            <Text>Push Notifications</Text>
+            <Switch />
+          </View>
         </View>
 
-        <Divider />
-
-        <View style={s.row}>
-          <Text>Push Notifications</Text>
-          <Switch />
-        </View>
-
-      </GlassSurface>
-
+      </Section>
     </View>
   )
 }
 
 const createStyles = (theme: ThemeContextType) => {
   const { vars, colors } = theme
-  const { unit } = vars
+  const { unit, half } = vars
 
   const styles = {
     ...StyleSheet.create({
@@ -90,12 +108,18 @@ const createStyles = (theme: ThemeContextType) => {
         flex: 1,
         justifyContent: 'flex-start',
         paddingHorizontal: unit,
-        paddingTop: unit * 6,
+        paddingTop: unit * 4.5,
         paddingBottom: unit * 1.5,
+        gap: unit
       },
       wrapper: {
-        padding: vars.unit,
-        gap: vars.unit
+        paddingTop: half,
+        paddingBottom: unit,
+        gap: unit
+      },
+      cardPickerWrapper: {
+        paddingVertical: unit,
+        paddingHorizontal: half
       },
       button: {
         height: unit * 3.75,

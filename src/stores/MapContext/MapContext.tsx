@@ -40,7 +40,6 @@ export const MapProvider = ({ children }: { children: React.ReactNode }) => {
         dark: `https://api.maptiler.com/maps/hybrid-v4-dark/style.json?key=${key}`,
         light: `https://api.maptiler.com/maps/hybrid-v4/style.json?key=${key}`
       },
-
     }
 
     return themes[mapMode][scheme]

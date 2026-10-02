@@ -61,7 +61,7 @@ const createStyles = (theme: ThemeContextType | null) => {
       fontWeight: 'bold',
     },
     subtitle: {
-      fontSize: 21,
+      fontSize: 19,
       letterSpacing: .65,
       fontWeight: 'bold',
     },

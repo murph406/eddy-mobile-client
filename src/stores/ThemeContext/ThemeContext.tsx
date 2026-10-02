@@ -50,7 +50,6 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     vars: Vars,
   }
 
-
   return (
     <ThemeContext.Provider value={value}>
       {children}

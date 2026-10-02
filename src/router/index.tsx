@@ -29,7 +29,7 @@ function AppStack() {
         component={SettingsScreen}
         options={{
           presentation: 'formSheet',
-          sheetAllowedDetents: [0.5, .95],
+          sheetAllowedDetents: [0.285, .6666],
           sheetGrabberVisible: false,
           sheetCornerRadius: 50,
           sheetInitialDetentIndex: 0,
