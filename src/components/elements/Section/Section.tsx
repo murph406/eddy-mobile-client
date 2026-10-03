@@ -11,7 +11,6 @@ type TextType = React.ComponentProps<typeof Text>['type']
 
 export type SectionProps = {
   label?: string
-  labelType?: TextType
   minHeight?: number
   suffix?: string
   loading?: boolean
@@ -25,7 +24,6 @@ type StyleProps = {
 
 const Section = ({
   label = 'label',
-  labelType = 'defaultBold',
   minHeight = 0,
   suffix,
   loading = false,
@@ -39,9 +37,9 @@ const Section = ({
       <View style={s.textWrapper}>
         <View>
           <ReactText>
-            <Text type={labelType} color='text2'>{label}</Text>
+            <Text type='body' color='text2' weight='semibold'>{label}</Text>
             <ReactText> </ReactText>
-            {suffix && <Text type='defaultBold' color='text2' style={s.suffix}>{suffix}</Text>}
+            {suffix && <Text type='body' color='text2' style={s.suffix}>{suffix}</Text>}
           </ReactText>
         </View>
         {onPressAll && <TextButton type='body' onPress={onPressAll}>View All</TextButton>}
@@ -77,7 +75,7 @@ const createStyles = (theme: ThemeContextType, _: unknown, props: StyleProps) =>
     contentWrapper: {
       paddingHorizontal: unit * 1.5,
       paddingTop: half,
-      gap: unit, 
+      gap: unit,
       minHeight,
       width: '100%'
     },

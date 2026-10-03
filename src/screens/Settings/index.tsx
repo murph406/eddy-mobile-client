@@ -20,7 +20,6 @@ const MAP_STYLE_OPTIONS: CardPickerOption<MapMode>[] = [
   { id: 'satellite', title: 'Satellite', imageName: 'map-satellite' },
 ]
 
-
 export default function SettingsScreen() {
   const navigation = useNavigation()
   const s = useStyles(createStyles)
@@ -64,7 +63,7 @@ export default function SettingsScreen() {
     <View style={s.container}>
       <StatusBar style="auto" />
 
-      <Section label='Map Modes'>
+      <Section label='Map Mode'>
         <CardPicker
           options={MAP_STYLE_OPTIONS}
           selectedId={mapMode}
@@ -77,7 +76,7 @@ export default function SettingsScreen() {
         <View style={s.wrapper}>
 
           <View style={s.row}>
-            <Text>Location Services</Text>
+            <Text >Location Services</Text>
 
             <Switch
               value={locationsSwitchValue}
