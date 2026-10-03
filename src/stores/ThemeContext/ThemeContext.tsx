@@ -2,7 +2,9 @@ import React from 'react'
 
 import { Vars } from '@/utils/Vars'
 import { Colors } from '@utils/Colors'
-import { useColorScheme } from 'react-native'
+import { Appearance, useColorScheme } from 'react-native'
+
+export type AppearanceMode = 'system' | 'dark' | 'light'
 
 export type ThemeContextType = {
   colors: typeof Colors['dark'] & {
@@ -11,14 +13,22 @@ export type ThemeContextType = {
   },
   scheme: 'light' | 'dark'
   vars: typeof Vars,
-  hslToHex: (hsl: string) => string
+  hslToHex: (hsl: string) => string,
+  customScheme: AppearanceMode
+  setCustomScheme: React.Dispatch<React.SetStateAction<AppearanceMode>>
 }
 
 const ThemeContext = React.createContext<ThemeContextType | null>(null)
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const colorScheme = useColorScheme()
-  const scheme = colorScheme === 'dark' ? 'dark' : 'light'
+  const systemScheme = colorScheme === 'dark' ? 'dark' : 'light'
+
+  const [customScheme, setCustomScheme] = React.useState<AppearanceMode>('system')
+
+  const scheme = React.useMemo(() => {
+    return customScheme == 'system' ? systemScheme : customScheme
+  }, [customScheme, systemScheme])
 
   const colors = React.useMemo(() => {
     return {
@@ -27,6 +37,11 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
       ...Colors[scheme]
     }
   }, [colorScheme, scheme])
+
+  React.useEffect(() => {
+    Appearance.setColorScheme(customScheme === 'system' ? 'unspecified' : customScheme)
+  }, [customScheme])
+
 
   function hslToHex(hsl: string = '') {
     const [h = 0, s = 0, l = 0] = hsl.match(/\d+\.?\d*/g)!.map(Number)
@@ -48,6 +63,8 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     scheme,
     hslToHex,
     vars: Vars,
+    customScheme,
+    setCustomScheme,
   }
 
   return (

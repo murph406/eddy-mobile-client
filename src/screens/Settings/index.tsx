@@ -3,14 +3,14 @@ import { StatusBar } from 'expo-status-bar'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 
+import ListRow from '@/components/composites/ListRow'
+import Switch from '@/components/elements/Switch'
 import CardPicker, { CardPickerOption } from '@components/composites/CardPicker'
 import Divider from '@components/elements/Divider'
 import Section from '@components/elements/Section'
-import Switch from '@components/elements/Switch'
-import Text from '@components/elements/Text'
 import useStyles from '@hooks/useStyles'
 import { useMapContext } from '@stores/MapContext'
-import { ThemeContextType, useThemeContext } from '@stores/ThemeContext'
+import { AppearanceMode, ThemeContextType, useThemeContext } from '@stores/ThemeContext'
 import { useUserContext } from '@stores/UserContext'
 import { MapMode } from '@utils/Types'
 
@@ -20,10 +20,16 @@ const MAP_STYLE_OPTIONS: CardPickerOption<MapMode>[] = [
   { id: 'satellite', title: 'Satellite', imageName: 'map-satellite' },
 ]
 
+const APPEARANCE_STYLE_OPTIONS: CardPickerOption<AppearanceMode>[] = [
+  { id: 'light', title: 'Light', systemImageName: 'sun.max.fill' },
+  { id: 'system', title: 'System', systemImageName: 'circle.lefthalf.filled' },
+  { id: 'dark', title: 'Dark', systemImageName: 'moon.fill' },
+]
+
 export default function SettingsScreen() {
   const navigation = useNavigation()
   const s = useStyles(createStyles)
-  const { scheme } = useThemeContext()
+  const { scheme, customScheme, setCustomScheme } = useThemeContext()
   const { mapMode, setMapMode } = useMapContext()
 
   const {
@@ -74,25 +80,32 @@ export default function SettingsScreen() {
 
       <Section label='Account'>
         <View style={s.wrapper}>
+          <ListRow label='Profile' icon='person' />
 
-          <View style={s.row}>
-            <Text >Location Services</Text>
+          <Divider />
 
+          <ListRow label='Push Notifications' icon='bell' />
+
+          <Divider />
+
+          <ListRow label='Location Services' icon='location'>
             <Switch
               value={locationsSwitchValue}
               onValueChange={validateLocationsPermissions}
             />
-          </View>
-
-          <Divider />
-
-          <View style={s.row}>
-            <Text>Push Notifications</Text>
-            <Switch />
-          </View>
+          </ListRow>
         </View>
-
       </Section>
+
+      <Section label='Appearance'>
+          <CardPicker
+            options={APPEARANCE_STYLE_OPTIONS}
+            selectedId={customScheme}
+            onSelect={setCustomScheme}
+          />
+      </Section>
+
+
     </View>
   )
 }

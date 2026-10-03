@@ -17,6 +17,9 @@
 		4476D881306F1CBB0067094D /* CardPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4476D880306F1CBB0067094D /* CardPickerView.swift */; };
 		4476D883306F1E5E0067094D /* CardPickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4476D882306F1E5E0067094D /* CardPickerManager.swift */; };
 		4476D885306F1EA00067094D /* CardPickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4476D884306F1EA00067094D /* CardPickerManager.m */; };
+		4476D889307181190067094D /* SFSymbolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4476D888307181190067094D /* SFSymbolView.swift */; };
+		4476D88B307181B20067094D /* SFSymbolManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4476D88A307181B20067094D /* SFSymbolManager.swift */; };
+		4476D88D307181CE0067094D /* SFSymbolManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4476D88C307181CE0067094D /* SFSymbolManager.m */; };
 		44B460A9303A3E7C008EFA2B /* SheetPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B460A7303A3E7C008EFA2B /* SheetPresenter.m */; };
 		44B460AA303A3E7C008EFA2B /* SheetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B460A8303A3E7C008EFA2B /* SheetPresenter.swift */; };
 		44B460AF303A4A94008EFA2B /* GlassButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B460AE303A4A94008EFA2B /* GlassButtonView.swift */; };
@@ -42,6 +45,9 @@
 		4476D880306F1CBB0067094D /* CardPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPickerView.swift; sourceTree = "<group>"; };
 		4476D882306F1E5E0067094D /* CardPickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPickerManager.swift; sourceTree = "<group>"; };
 		4476D884306F1EA00067094D /* CardPickerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardPickerManager.m; sourceTree = "<group>"; };
+		4476D888307181190067094D /* SFSymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolView.swift; sourceTree = "<group>"; };
+		4476D88A307181B20067094D /* SFSymbolManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolManager.swift; sourceTree = "<group>"; };
+		4476D88C307181CE0067094D /* SFSymbolManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFSymbolManager.m; sourceTree = "<group>"; };
 		44B460A6303A3E7C008EFA2B /* Eddy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Eddy-Bridging-Header.h"; path = "Eddy/Eddy-Bridging-Header.h"; sourceTree = "<group>"; };
 		44B460A7303A3E7C008EFA2B /* SheetPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SheetPresenter.m; path = ../Eddy/NativeModules/SheetPresenter/SheetPresenter.m; sourceTree = "<group>"; };
 		44B460A8303A3E7C008EFA2B /* SheetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SheetPresenter.swift; path = ../Eddy/NativeModules/SheetPresenter/SheetPresenter.swift; sourceTree = "<group>"; };
@@ -81,6 +87,7 @@
 		13B07FAE1A68108700A75B9A /* Eddy */ = {
 			isa = PBXGroup;
 			children = (
+				4476D8873071810A0067094D /* SFSymbolView */,
 				4476D87D306F1AC00067094D /* CardPicker */,
 				4476D875306DEC540067094D /* GlassSurface */,
 				BB2F792B24A3F905000567C9 /* Supporting */,
@@ -124,6 +131,16 @@
 				4476D884306F1EA00067094D /* CardPickerManager.m */,
 			);
 			path = CardPicker;
+			sourceTree = "<group>";
+		};
+		4476D8873071810A0067094D /* SFSymbolView */ = {
+			isa = PBXGroup;
+			children = (
+				4476D888307181190067094D /* SFSymbolView.swift */,
+				4476D88A307181B20067094D /* SFSymbolManager.swift */,
+				4476D88C307181CE0067094D /* SFSymbolManager.m */,
+			);
+			path = SFSymbolView;
 			sourceTree = "<group>";
 		};
 		44B460AB303A48B7008EFA2B /* SheetPresenter */ = {
@@ -437,13 +454,16 @@
 				44B460B0303A4A94008EFA2B /* GlassButtonManager.m in Sources */,
 				44B460B1303A4A94008EFA2B /* GlassButtonManager.swift in Sources */,
 				4476D87F306F1ADD0067094D /* CardPicker.swift in Sources */,
+				4476D88D307181CE0067094D /* SFSymbolManager.m in Sources */,
 				44B460AA303A3E7C008EFA2B /* SheetPresenter.swift in Sources */,
 				4476D883306F1E5E0067094D /* CardPickerManager.swift in Sources */,
 				4476D876306DEC540067094D /* GlassSurfaceManager.swift in Sources */,
+				4476D88B307181B20067094D /* SFSymbolManager.swift in Sources */,
 				4476D877306DEC540067094D /* GlassSurfaceManager.m in Sources */,
 				4476D881306F1CBB0067094D /* CardPickerView.swift in Sources */,
 				4476D878306DEC540067094D /* GlassSurfaceView.swift in Sources */,
 				4476D885306F1EA00067094D /* CardPickerManager.m in Sources */,
+				4476D889307181190067094D /* SFSymbolView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
