@@ -9,6 +9,7 @@ import type { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { useMapContext } from '@stores/MapContext'
 import { ThemeContextType } from '@stores/ThemeContext'
 import { StyleSheet, useWindowDimensions, View } from 'react-native'
+import HomeSheet from './Sheet'
 
 const key = process.env.EXPO_PUBLIC_MAPTILER_KEY
 if (!key) throw new Error('Missing EXPO_PUBLIC_MAPTILER_KEY in .env')
@@ -31,6 +32,15 @@ export default function Home() {
           icon: {
             type: 'sfSymbol',
             name: 'location.fill',
+          },
+          onPress: goToUserLocation,
+        },
+        {
+          type: 'button',
+          label: 'Draw on Map',
+          icon: {
+            type: 'sfSymbol',
+            name: 'hand.draw.fill',
           },
           onPress: goToUserLocation,
         },
@@ -72,6 +82,8 @@ export default function Home() {
           />
         </Marker>
       )}
+
+      <HomeSheet />
     </MapView>
   )
 }

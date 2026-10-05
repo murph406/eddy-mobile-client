@@ -20,6 +20,9 @@
 		4476D889307181190067094D /* SFSymbolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4476D888307181190067094D /* SFSymbolView.swift */; };
 		4476D88B307181B20067094D /* SFSymbolManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4476D88A307181B20067094D /* SFSymbolManager.swift */; };
 		4476D88D307181CE0067094D /* SFSymbolManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4476D88C307181CE0067094D /* SFSymbolManager.m */; };
+		4476D8903072DEFC0067094D /* MapSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4476D88F3072DEFC0067094D /* MapSheetView.swift */; };
+		4476D8923074337C0067094D /* MapSheetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4476D8913074337C0067094D /* MapSheetManager.swift */; };
+		4476D89430743DC10067094D /* MapSheetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4476D89330743DC10067094D /* MapSheetManager.m */; };
 		44B460A9303A3E7C008EFA2B /* SheetPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B460A7303A3E7C008EFA2B /* SheetPresenter.m */; };
 		44B460AA303A3E7C008EFA2B /* SheetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B460A8303A3E7C008EFA2B /* SheetPresenter.swift */; };
 		44B460AF303A4A94008EFA2B /* GlassButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B460AE303A4A94008EFA2B /* GlassButtonView.swift */; };
@@ -48,6 +51,9 @@
 		4476D888307181190067094D /* SFSymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolView.swift; sourceTree = "<group>"; };
 		4476D88A307181B20067094D /* SFSymbolManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolManager.swift; sourceTree = "<group>"; };
 		4476D88C307181CE0067094D /* SFSymbolManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFSymbolManager.m; sourceTree = "<group>"; };
+		4476D88F3072DEFC0067094D /* MapSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSheetView.swift; sourceTree = "<group>"; };
+		4476D8913074337C0067094D /* MapSheetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSheetManager.swift; sourceTree = "<group>"; };
+		4476D89330743DC10067094D /* MapSheetManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapSheetManager.m; sourceTree = "<group>"; };
 		44B460A6303A3E7C008EFA2B /* Eddy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Eddy-Bridging-Header.h"; path = "Eddy/Eddy-Bridging-Header.h"; sourceTree = "<group>"; };
 		44B460A7303A3E7C008EFA2B /* SheetPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SheetPresenter.m; path = ../Eddy/NativeModules/SheetPresenter/SheetPresenter.m; sourceTree = "<group>"; };
 		44B460A8303A3E7C008EFA2B /* SheetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SheetPresenter.swift; path = ../Eddy/NativeModules/SheetPresenter/SheetPresenter.swift; sourceTree = "<group>"; };
@@ -87,6 +93,7 @@
 		13B07FAE1A68108700A75B9A /* Eddy */ = {
 			isa = PBXGroup;
 			children = (
+				4476D88E3072DED70067094D /* MapSheet */,
 				4476D8873071810A0067094D /* SFSymbolView */,
 				4476D87D306F1AC00067094D /* CardPicker */,
 				4476D875306DEC540067094D /* GlassSurface */,
@@ -141,6 +148,16 @@
 				4476D88C307181CE0067094D /* SFSymbolManager.m */,
 			);
 			path = SFSymbolView;
+			sourceTree = "<group>";
+		};
+		4476D88E3072DED70067094D /* MapSheet */ = {
+			isa = PBXGroup;
+			children = (
+				4476D88F3072DEFC0067094D /* MapSheetView.swift */,
+				4476D8913074337C0067094D /* MapSheetManager.swift */,
+				4476D89330743DC10067094D /* MapSheetManager.m */,
+			);
+			path = MapSheet;
 			sourceTree = "<group>";
 		};
 		44B460AB303A48B7008EFA2B /* SheetPresenter */ = {
@@ -453,6 +470,7 @@
 				44B460AF303A4A94008EFA2B /* GlassButtonView.swift in Sources */,
 				44B460B0303A4A94008EFA2B /* GlassButtonManager.m in Sources */,
 				44B460B1303A4A94008EFA2B /* GlassButtonManager.swift in Sources */,
+				4476D89430743DC10067094D /* MapSheetManager.m in Sources */,
 				4476D87F306F1ADD0067094D /* CardPicker.swift in Sources */,
 				4476D88D307181CE0067094D /* SFSymbolManager.m in Sources */,
 				44B460AA303A3E7C008EFA2B /* SheetPresenter.swift in Sources */,
@@ -462,8 +480,10 @@
 				4476D877306DEC540067094D /* GlassSurfaceManager.m in Sources */,
 				4476D881306F1CBB0067094D /* CardPickerView.swift in Sources */,
 				4476D878306DEC540067094D /* GlassSurfaceView.swift in Sources */,
+				4476D8903072DEFC0067094D /* MapSheetView.swift in Sources */,
 				4476D885306F1EA00067094D /* CardPickerManager.m in Sources */,
 				4476D889307181190067094D /* SFSymbolView.swift in Sources */,
+				4476D8923074337C0067094D /* MapSheetManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
