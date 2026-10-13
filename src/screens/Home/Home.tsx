@@ -1,6 +1,8 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
+import { getHealth } from '@/api/health'
+import Text from '@/components/elements/Text'
 import { presentTestSheet } from '@/native/SheetPresenter'
 import { HomeStackParamList } from '@/router'
 import useStyles from '@hooks/useStyles'
@@ -14,12 +16,15 @@ import HomeSheet from './Sheet'
 const key = process.env.EXPO_PUBLIC_MAPTILER_KEY
 if (!key) throw new Error('Missing EXPO_PUBLIC_MAPTILER_KEY in .env')
 
+type MessageType = string | null
+
 export default function Home() {
   const { cameraRef, mapTheme, pin, setPin, goToUserLocation } = useMapContext()
   const navigation = useNavigation<NativeStackNavigationProp<HomeStackParamList>>()
   const s = useStyles(createStyles)
 
   const { height } = useWindowDimensions()
+  const [message, setMessage] = React.useState<MessageType>(null)
 
   React.useEffect(() => {
     navigation.setOptions({
@@ -58,6 +63,20 @@ export default function Home() {
     })
   }, [navigation])
 
+  React.useEffect(() => {
+    const init = async() => {
+      try {
+        const { data } = await getHealth()
+        setMessage(data?.data?.message || null)
+      } catch (error) {
+        console.log("ERR::", error)
+        debugger
+      }
+    }
+
+    init()
+  }, [])
+
   function handleLongPress(event: any) {
     const coordinate = event.nativeEvent.lngLat as [number, number]
 
@@ -83,16 +102,29 @@ export default function Home() {
         </Marker>
       )}
 
-      <HomeSheet />
+
+
+      <HomeSheet >
+        <View style={s.sheetContainer}>
+          {message && <Text>{message}</Text>}
+        </View>
+      </HomeSheet>
     </MapView>
   )
 }
 
 
 const createStyles = (theme: ThemeContextType | null) => {
-  const { colors } = theme!
+  const { colors, vars } = theme!
+  const { unit } = vars
 
   const styles = StyleSheet.create({
+    sheetContainer: {
+      alignItems: 'center',
+      flex: 1,
+      marginTop: unit,
+      padding: unit
+    },
     pin: {
       width: 20,
       height: 20,
