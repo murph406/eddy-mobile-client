@@ -6,4 +6,3 @@ if (!BASE_URL) throw new Error('Missing BASE_URL in .env')
 export function getHealth() {
     return axios.get(`${BASE_URL}`)
 }
-

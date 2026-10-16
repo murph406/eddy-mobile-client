@@ -19,6 +19,10 @@ const smallIosDevices = [
     'iPhone14,6'
 ]
 
+export const SECOND = 1000
+export const MINUTE = SECOND * 60
+export const HOUR = MINUTE * 60
+
 const normalize = (size: number) => {
     const newSize = size * width / 520
     let x = 0

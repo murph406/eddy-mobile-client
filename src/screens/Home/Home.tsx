@@ -3,6 +3,7 @@ import React from 'react'
 
 import { getHealth } from '@/api/health'
 import Text from '@/components/elements/Text'
+import useFetch from '@/hooks/useFetch'
 import { presentTestSheet } from '@/native/SheetPresenter'
 import { HomeStackParamList } from '@/router'
 import useStyles from '@hooks/useStyles'
@@ -10,13 +11,12 @@ import { Camera, Map as MapView, Marker } from '@maplibre/maplibre-react-native'
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { useMapContext } from '@stores/MapContext'
 import { ThemeContextType } from '@stores/ThemeContext'
+import { SECOND } from '@utils/Vars'
 import { StyleSheet, useWindowDimensions, View } from 'react-native'
 import HomeSheet from './Sheet'
 
 const key = process.env.EXPO_PUBLIC_MAPTILER_KEY
 if (!key) throw new Error('Missing EXPO_PUBLIC_MAPTILER_KEY in .env')
-
-type MessageType = string | null
 
 export default function Home() {
   const { cameraRef, mapTheme, pin, setPin, goToUserLocation } = useMapContext()
@@ -24,7 +24,6 @@ export default function Home() {
   const s = useStyles(createStyles)
 
   const { height } = useWindowDimensions()
-  const [message, setMessage] = React.useState<MessageType>(null)
 
   React.useEffect(() => {
     navigation.setOptions({
@@ -63,19 +62,7 @@ export default function Home() {
     })
   }, [navigation])
 
-  React.useEffect(() => {
-    const init = async() => {
-      try {
-        const { data } = await getHealth()
-        setMessage(data?.data?.message || null)
-      } catch (error) {
-        console.log("ERR::", error)
-        debugger
-      }
-    }
-
-    init()
-  }, [])
+  const { data } = useFetch('health', getHealth, { poll: 30 * SECOND })
 
   function handleLongPress(event: any) {
     const coordinate = event.nativeEvent.lngLat as [number, number]
@@ -102,11 +89,9 @@ export default function Home() {
         </Marker>
       )}
 
-
-
       <HomeSheet >
         <View style={s.sheetContainer}>
-          {message && <Text>{message}</Text>}
+          {data?.message && <Text>{data.message}</Text>}
         </View>
       </HomeSheet>
     </MapView>

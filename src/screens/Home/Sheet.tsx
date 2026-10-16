@@ -14,13 +14,13 @@ type NativeMapSheetProps = Omit<ViewProps, 'ref'> & {
 const NativeMapSheet = requireNativeComponent<NativeMapSheetProps>('MapSheet')
 
 type MapSheetProps = Omit<ViewProps, 'ref'> & {
-    detents?: number[] // fractions of screen height --> e.g. [0.12, 0.5, 0.95]
+    detents?: number[] 
     initialDetentIndex?: number
     onDetentChange?: (index: number) => void
 }
 
 export default function HomeSheet({
-    detents = [0.12, 0.5, 0.925],
+    detents = [0.1, 0.5, 0.925],
     initialDetentIndex = 0,
     onDetentChange,
     style,
